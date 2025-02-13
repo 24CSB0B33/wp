@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: powderblue;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            font-weight:bold;
+            color:black;
+            font-family: 'Inter', sans-serif;
+            font-size: 30px;
+        }
+        .container {
+            margin: auto;
+            width: 50%;
+            padding: 20px;
+        }
+        form {
+            background-color: #ffa8B6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        input[type="button"], input[type="submit"], input[type="reset"] {
+            background-color: tomato;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+            background-color: darkred;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Registration Form</h1>
+    <hr>
+    <form action="https://nitw.ac.in/main/" method="post">
+        <fieldset>
+            <legend>Personal Details</legend>
+<br>
+            First name:
+            <input type="text" id="fname" name="Firstname" placeholder="Enter your first name" required>
+            <p id="fname-msg" class="error"></p>
+            Last name:
+            <input type="text" id="lname" name="lastname" placeholder="Enter your last name" required>
+            <span id="lname-msg" class="error"></span>
+            Date of Birth:
+            <input type="date" name="Date of birth" placeholder="Enter your Date of Birth" required>
+            Phone Number:
+            <input type="number" id="phno" name="Phone Number" placeholder="Enter your phone number" required oninput="myFunction()">
+            <span id="phno-msg" class="error"></span>
+<br>
+            E-mail ID:
+            <input type="text" name="Gmail ID" placeholder="Enter your email ID" required>
+            Aadhar Number:
+            <input type="number" id="adno" name="Aadhar" placeholder="Enter Aadhar number" required oninput="mynewFunction()">
+            <p id="adno-check" class="error"></p>
+            <p>Select your age:</p>
+            <input type="radio" id="age1" name="age" value="0 to 15"><label for="age1">0 to 15</label>
+            <input type="radio" id="age2" name="age" value="16 to 20"><label for="age2">16 to 20</label>
+            <p>Select your gender:</p>
+            <input type="radio" id="gender1" name="gender" value="Male"><label for="gender1">Male</label>
+            <input type="radio" id="gender2" name="gender" value="Female"><label for="gender2">Female</label>
+            <input type="radio" id="gender3" name="gender" value="Other"><label for="gender3">Other</label>
+            Address:
+            D-no:
+            <input type="text" name="D-no:" required>
+            street/locality:
+            <input type="text" name="street/locality">
+            City:
+            <input type="text" name="City:" required>
+            State:
+            <input type="text" name="State" required>
+            Pincode:
+            <input type="number" name="Pin" required>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Professional Information</legend>
+<br>
+            SGPA of previous semester:
+<br>
+            <input type="decimal" name="SGPA:" required>
+            <p>Select your preferred course:</p>
+            <select>
+                <option>Choose an option</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Deep Learning">Deep Learning</option>
+            </select>
+            <p>Select your preferred coding language:</p>
+            <select>
+                <option>Choose a course</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="Java Script">JavaScript</option>
+            </select>
+        </fieldset>
+        <section>
+            <center>
+                <input type="button" value="Save">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </center>
+        </section>
+    </form>
+</div>
+
+<script>
+    function myFunction() {
+        let x = document.getElementById("phno").value;
+        let text1 = "";
+        if (isNaN(x) || x.length !== 10) {
+            text1 = "Input not valid";
+            document.getElementById("phno").classList.add("error");
+        } else {
+            document.getElementById("phno").classList.remove("error");
+            text1 = "";
+        }
+        document.getElementById("phno-msg").innerHTML = text1;
+    }
+
+    function mynewFunction() {
+        let y = document.getElementById("adno").value;
+        let text2 = "";
+        if (isNaN(y) || y.length !== 12) {
+            text2 = "Input is not valid";
+            document.getElementById("adno").classList.add("error");
+        } else {
+            document.getElementById("adno").classList.remove("error");
+            text2 = "";
+        }
+        document.getElementById("adno-check").innerHTML = text2;
+    }
+</script>
+
+</body>
+</html>
