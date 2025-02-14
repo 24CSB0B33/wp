@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  background-image: url("https://t3.ftcdn.net/jpg/00/29/13/38/360_F_29133877_bfA2n7cWV53fto2BomyZ6pyRujJTBwjd.jpg");
+
+  min-height: 750px;
+  opacity:0.8;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 400px;
+text-align:center;
+  padding: 16px;
+  background-color: white;
+}
+
+
+input[type=text], input[type=date],input[type=range],input[type=number] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=date]:focus,input[type=range]:focus,input[type=number]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.button {
+ background-color: #ea5455;
+ border: none;
+ color: white;
+ padding: 15px 32px;
+ text-align: center;
+ text-decoration: none;
+ display: inline-block;
+ font-size: 16px;
+ margin: 4px 2px;
+ cursor: pointer;
+OPACITY:1;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">
+    <a href="file:///C:/Users/24csb0b33/Downloads/tourigo.html">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjq7Dp2TSnI4l2fwnI-Ar_lASxdnDge7f8YA&s" alt="Tourigo" height="150px">
+    </a>
+  </div>
+
+
+<div class="bg-img">
+  <form  class="container">
+    <h1>Book Hotel</h1>
+
+   <label for="from-destination">From Destination:</label><br>
+ <input type="text" id="from-destination" name="from-destination"><br>
+ <label for="to-destination">To Destination:</label><br>
+ <input type="text" id="to-destination" name="to-destination"><br>
+ <label for="start-date">Start date of stay:</label><br>
+ <input type="date" id="start-date" name="start-date"><br>
+ <label for="end-date">Stay till:</label><br>
+ <input type="date" id="end-date" name="end-date"><br>
+ <label for="number-of-people">No. of People:</label><br>
+ <input type="number" id="number-of-people" name="number-of-people"><br>
+ <label for="price-range">Enter your price range per day:</label><br>
+ <input type="range" id="price-range" name="price-range" min="500" max="20000"><br><br>
+ <button class="button">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>
