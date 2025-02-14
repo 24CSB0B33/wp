@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Tourigo
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+body {
+ font-family: 'Poppins', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+.back {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.thx {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 15px;
+}
+
+nav {
+  width: 100%;
+  top: 50px;
+  text-align: center;
+}
+nav a {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ea5455;
+  margin: 0 15px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+nav a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: #16151b;
+  top: 47%;
+  animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+nav a:hover:before {
+  animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+}
+@keyframes in {
+  0% {
+    width: 0;
+    left: 0;
+    right: auto;
+  }
+  100% {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+@keyframes out {
+  0% {
+    width: 100%;
+    left: auto;
+    right: 0;
+  }
+  100% {
+    width: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@for $i from 1 through 5 {
+  nav a:nth-child(#{$i}) {
+    animation: show 0.2s #{$i * 0.1 + 1}s ease 1 both;
+  }
+}
+
+
+div.header {
+color:#ea5455;
+font-family: 'montserrat';
+font-size:30px;
+}
+
+pre.intro:hover {
+text-shadow: 1px 1px;
+background-color:black;
+background-radius:5px;
+font-style:italic;
+}
+
+.footer {
+   left: 0;
+   bottom: 0;
+text-align:center;
+   width: 100%;
+   background-color: #ea5455;
+   color: white;
+   font-size:25px;
+font-family: 'montserrat';
+}
+.fa {
+  padding: 20px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+display:inline-block;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+</style>
+</head>
+
+<body>
+<div class="logo">
+  <a href="file:///C:/Users/24csb0b33/Downloads/tourigo.html">
+    <img src="file:///C:/Users/chand/Downloads/Screenshot%202025-01-28%20172822%20(1).png" alt="Tourigo" height="100px" style="vertical-align: top;">
+  </a>
+</div>
+
+<nav>
+  <a href="file:///Z:/24CSB0B33/tourigo.html">home</a>
+  <a href="file:///Z:/24CSB0B33/gallery.html">heritage</a>
+  <a href="file:///Z:/24CSB0B33/hotel.html">hotel booking</a>
+  <a href="file:///Z:/24CSB0B33/galleryphotos.html">gallery</a>
+</nav>
+
+<a class="thx" style="background-color: black; color: white; text-decoration: none; padding: 4px 6px; font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Ubuntu, Roboto, Noto, 'Segoe UI', Arial, sans-serif; font-size: 12px; font-weight: bold; line-height: 1.2; display: inline-block; border-radius: 3px;"></a>
+
+<br> <br>
+  <div class="header">
+    <pre class="intro">          Welcome to our one stop solution to all your tourism needs right
+ from deciding your destination to book your tickets for it. You can find 
+ data about most famous touring spots in India and then book your tickets 
+ in one click after experiencing those beautiful images.
+
+                  In our website you can comfortably sit it the comfort of your
+ sofa and find some of the most beautiful and historic places of our country with
+ some beautiful imagery. You can also book from all the top available hotels of 
+ that place with additional discount upto 20% from our website if you  use the
+ coupon code 'TOURIGO20'. 
+
+                 So what are you waiting for, find your dream destination and pack
+ your bags for one of the best experiences in your life.
+</pre>
+  </div>
+<br> <br>
+
+
+<div class="footer">
+<pre>   
+
+          Thanks for visiting our website, we hope that you have enjoyed your experience with
+ our website. If the are any quaries please contact our customer service number +918888866777
+ or mail us at tourigo.services@gmail.com  </pre>
+
+<a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href="#" class="fa fa-google"></a>
+<a href="#" class="fa fa-youtube"></a>
+<a href="#" class="fa fa-instagram"></a>
+</div>
+
+</body>
+</html>
