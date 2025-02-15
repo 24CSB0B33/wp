@@ -1,0 +1,569 @@
+<html>
+<head>
+<title>NITW parody website</title>
+<style>
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    color: white;
+    border: 1px solid black;
+    background-color: #00308F;
+    height: 60px;
+    font-size: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    height: 60px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #00308F !important; /* Added !important */
+}
+
+.break {
+    background-color: #00308F;
+    height: 6px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0;
+}
+
+.mySlides {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+    .prev, .next, .text {
+        font-size: 11px;
+    }
+}
+
+.breaks {
+    background-color: #00308F;
+    height: 4px;
+}
+
+marquee {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.newspaper {
+  column-count: 3;
+  column-gap: 40px;
+  column-rule: 1px solid lightblue;
+}
+
+h2 {
+  column-span: all;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+h2{
+color:red;
+text-align:center;
+font-size:30px;
+}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+  .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active, .dot:hover {
+        background-color: }
+
+.carousel-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+    }
+
+    .slide {
+        display: none;
+    }
+
+    .prev-btn, .next-btn {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+    }
+
+    .next-btn {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev-btn:hover, .next-btn:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    .indicator {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .current, .indicator:hover {
+        background-color: #717171;
+    
+</style>
+</head>
+
+<body>
+<div class="header">
+    <h1>Welcome to NIT Warangal</h1>
+</div>
+<br><br>
+<div class="logo">
+    <a href="https://www.nitw.ac.in">
+        <img src="https://www.nitw.ac.in/images/NITW_logo_telugu3.png" alt="NIT Warangal" height="114px" width="701px">
+    </a>
+</div>
+<br><br>
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">Institute</a></li>
+    <li><a href="#contact">Administration</a></li>
+    <li><a href="#about">Academics</a></li>
+    <li><a href="#news">R&D</a></li>
+    <li><a href="#news">Students</a></li>
+</ul>
+<br><br><br><br>
+<div class="break"></div>
+<br><br>
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 4</div>
+        <img src="https://nitw.ac.in/api/static/files/Convocation-2024_2024-12-4-12-9-1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 4</div>
+        <img src="https://nitw.ac.in/api/static/files/Wire_Bonder_2024-12-16-12-59-37.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 4</div>
+        <img src="https://nitw.ac.in/api/static/files/RTST_2024_Workshop_2024-12-11-16-36-45.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 4</div>
+        <img src="https://nitw.ac.in/api/static/files/plantation-banner_2024-12-10-10-24-14.jpg" style="width:100%">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+}
+</script>
+
+<br><br>
+<div class="breaks"></div>
+
+<marquee bgcolor="#FFBF00" scrollamount="10"><pre> Note : List of provisionally shortlisted group-'A' posts and group-'B' are ready to be filled  ||  Note : List of provisionally alloted people for Reliance New NaariShakthi foundation scholarship is out now  ||</pre> </marquee>
+<div class="breaks"></div>
+
+<div class="newspaper">
+<h2>Important Notices</h2>
+Magnetohydrodynamics in the Light of Astrophysical Dynamos (3rd - 8th March 2025 ) Organized by DEPARTMENTS OF MATHEMATICS & MECHANICAL ENGINEERING,NATIONAL INSTITUTE OF TECHNOLOGY WARANGAL<BR>“Power Electronics Technology for Self-Reliant and Viksit Bharat” (24th Feb to 6th March 2025) Organized by Visvesvaraya National Institute of Technology, Nagpur, M.S., India In Association With Electronics & ICT Academy, NIT Warangal<BR>From Research to Reality: Translating AI and ML Innovations into Practice (17th to 28th February 2025, 3 PM to 7 PM), Organized by E & ICT Academy, In Association With Department of CSE & IS, VIT Vellore"
+</div>
+
+
+<BR><BR>
+<div class="break"></div>
+
+<BR>
+<h2>Campus Gallery</h2>
+<div class="carousel-container">
+    <div class="slide">
+        <img src="https://nitw.ac.in/api/static/files/MoU_Between_NITW_and_BIS_2025-1-10-12-1-59.jpg" style="width:100%">
+    </div>
+
+    <div class="slide">
+        <img src="https://nitw.ac.in/api/static/files/Medical_Camp_2025-1-6-11-15-22.jpg" style="width:100%">
+    </div>
+
+    <div class="slide">
+        <img src="https://nitw.ac.in/api/static/files/ccpd2025_2025-1-1-16-11-23.jpg0" alt="NITW" style="width:100%">
+    </div>
+<div class="slide">
+        <img src="https://nitw.ac.in/api/static/files/nitwstafftournaments2024_2024-12-26-20-45-21.jpg" style="width:100%">
+    </div>
+<div class="slide">
+        <img src="https://nitw.ac.in/api/static/files/Swachhata_2024-12-9-15-19-12.jpg" style="width:100%">
+    </div>
+<div class="slide">
+        <img src="https://nitw.ac.in/api/static/files/Swachhata_2024-12-9-15-19-12.jpg" style="width:100%">
+    </div>
+
+
+
+
+    <a class="prev-btn" onclick="navigateSlides(-1)">❮</a>
+    <a class="next-btn" onclick="navigateSlides(1)">❯</a>
+</div>
+<br>
+
+<div style="text-align:center">
+    <span class="indicator" onclick="currentSlide(1)"></span> 
+    <span class="indicator" onclick="currentSlide(2)"></span> 
+    <span class="indicator" onclick="currentSlide(3)"></span> 
+</div>
+
+<script>
+let slidePosition = 1;
+displaySlides(slidePosition);
+
+function navigateSlides(n) {
+    displaySlides(slidePosition += n);
+}
+
+function currentSlide(n) {
+    displaySlides(slidePosition = n);
+}
+
+function displaySlides(n) {
+    let i;
+    let slides = document.getElementsByClassName("slide");
+    let indicators = document.getElementsByClassName("indicator");
+    if (n > slides.length) {slidePosition = 1}
+    if (n < 1) {slidePosition = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < indicators.length; i++) {
+        indicators[i].className = indicators[i].className.replace(" current", "");
+    }
+    slides[slidePosition-1].style.display = "block";  
+    indicators[slidePosition-1].className += " current";
+}
+</script>
+
+</body>
+</html>
