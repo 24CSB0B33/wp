@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Responsive Calculator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .calculator {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 360px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .display {
+      font-size: 2rem;
+      text-align: right;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      font-size: 1.5rem;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #e0e0e0;
+    }
+
+    .button:focus {
+      outline: none;
+    }
+
+    .button-operator {
+      background-color: #ff9f00;
+      color: white;
+    }
+
+    .button-operator:hover {
+      background-color: #e08f00;
+    }
+
+    .button-equal {
+      background-color: #4caf50;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .button-equal:hover {
+      background-color: #45a049;
+    }
+
+    .button[aria-pressed="true"] {
+      background-color: #d9d9d9;
+    }
+
+    @media (max-width: 600px) {
+      .calculator {
+        max-width: 100%;
+      }
+
+      .buttons {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator" aria-labelledby="calculatorTitle">
+    <h1 id="calculatorTitle" class="sr-only">Calculator</h1>
+    <div class="display" id="display" role="textbox" aria-live="polite">0</div>
+    <div class="buttons">
+      <button class="button" aria-label="7" onclick="appendToDisplay('7')">7</button>
+      <button class="button" aria-label="8" onclick="appendToDisplay('8')">8</button>
+      <button class="button" aria-label="9" onclick="appendToDisplay('9')">9</button>
+      <button class="button button-operator" aria-label="+" onclick="appendToDisplay('+')">+</button>
+
+      <button class="button" aria-label="4" onclick="appendToDisplay('4')">4</button>
+      <button class="button" aria-label="5" onclick="appendToDisplay('5')">5</button>
+      <button class="button" aria-label="6" onclick="appendToDisplay('6')">6</button>
+      <button class="button button-operator" aria-label="-" onclick="appendToDisplay('-')">-</button>
+
+      <button class="button" aria-label="1" onclick="appendToDisplay('1')">1</button>
+      <button class="button" aria-label="2" onclick="appendToDisplay('2')">2</button>
+      <button class="button" aria-label="3" onclick="appendToDisplay('3')">3</button>
+      <button class="button button-operator" aria-label="*" onclick="appendToDisplay('*')">*</button>
+
+      <button class="button" aria-label="0" onclick="appendToDisplay('0')">0</button>
+      <button class="button" aria-label="." onclick="appendToDisplay('.')">.</button>
+      <button class="button button-equal" aria-label="equals" onclick="calculateResult()">=</button>
+      <button class="button button-operator" aria-label="/" onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = '';
+
+    function appendToDisplay(value) {
+      currentInput += value;
+      document.getElementById('display').textContent = currentInput;
+    }
+
+    function calculateResult() {
+      try {
+        currentInput = eval(currentInput).toString();
+        document.getElementById('display').textContent = currentInput;
+      } catch (e) {
+        document.getElementById('display').textContent = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
