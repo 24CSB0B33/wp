@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Merriweather:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-family: 'Merriweather', serif;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+        }
+
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+p {
+  word-spacing: 10px;
+line-height:20px;
+}
+
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: url('hero-banner.jpg') no-repeat center center/cover;
+            text-align: center;
+            padding: 100px 20px;
+            color: #fff;
+        }
+
+        .hero-heading {
+            font-size: 48px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .hero-heading span {
+            font-family: 'Raleway', cursive;
+        }
+
+        .cta-btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.6s;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+        }
+
+        .cta-btn:active::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .blog {
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+        }
+
+        .blog h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-family: 'Merriweather', serif;
+        }
+
+        .blog-post {
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-post img {
+            width: 50%;
+            transition: transform 0.3s;
+        }
+
+        .blog-post:hover img {
+            transform: scale(1.1);
+        }
+
+        .blog-post h3 {
+            padding: 20px;
+            font-size: 24px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .blog-post p {
+            padding: 0 20px 20px;
+        }
+
+        .categories {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .category-btn {
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .subscribe {
+            padding: 50px 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .subscribe form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subscribe input {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .subscribe-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+            transition: box-shadow 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.9);
+        }
+
+        .about, .contact {
+            padding: 50px 20px;
+            text-align: center;
+        }
+       section {
+            background-color:#9df9ef;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        section:hover {
+            background-color:#ffa8B6;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            transform: rotate(20deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">PepsiCo Official Blog Website</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <h1 class="hero-heading">Welcome to <span>PepsiCola Blog</span></h1>
+        <button class="cta-btn">Get Started</button>
+    </section>
+
+<section>
+        <hr>
+        <p>The history of Pepsi-Cola is rich and fascinating. Originally created by pharmacist Caleb Bradham in 1893, Pepsi-Cola has grown to become one of the most iconic brands in the world. From its humble beginnings in New Bern, North Carolina, to its status as a global beverage giant, Pepsi has played a significant role in shaping popular culture and consumer preferences.</p>
+        <p>Whether it's through innovative marketing campaigns, sponsorship of major events, or introduction of new products, Pepsi has continually reinvented itself to stay relevant and appealing to consumers. Its rivalry with Coca-Cola has also sparked numerous marketing battles that have become legendary in the world of advertising.</p>
+   
+</section>
+    
+    <section class="blog" id="blog">
+        <h2>Latest Posts</h2>
+        <div class="blog-post">
+            <img src="data:image/jpeg;base64,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" alt="Post 1" class="center">
+<h2> Deal with Russian Military </h2>
+<p> The PepsiCo-Soviet Union deal is a fascinating piece of history that highlights the inventive nature of trade and diplomacy during the Cold War.
+
+Background
+In the 1970s, PepsiCo was eager to expand its market and saw an opportunity in the Soviet Union. However, there was a major problem: the Soviet ruble was not convertible to other currencies and had no value outside the Soviet Union. To overcome this, PepsiCo and the Soviet Union came up with a creative barter arrangement.
+
+Initial Agreement
+In 1972, PepsiCo entered into its first barter deal with the Soviet Union. The Soviets agreed to provide Stolichnaya vodka to PepsiCo, which PepsiCo could then sell in the American market. In exchange, PepsiCo would provide Pepsi syrup to the Soviet Union to be bottled and distributed there. This deal was mutually beneficial; Pepsi gained access to a new market, and the Soviet Union was able to offer its citizens a popular American product.
+
+The Naval Fleet Deal
+As the 1980s rolled on, the sale of vodka in the U.S. began to decline, and PepsiCo needed to find a new way to continue their barter agreement. In 1989, an unusual solution was found: PepsiCo would receive a fleet of decommissioned Soviet warships.
+
+Cultural Impact
+This deal made PepsiCo the owner of what was briefly considered the sixth-largest naval fleet in the world, albeit only temporarily. It also showcased the lengths to which companies could go to establish and maintain international trade relationships during a time of political tension. Additionally, Pepsi’s entry into the Soviet market marked one of the first instances of an American consumer product being widely available there, serving as a symbol of the slow thawing of Cold War tensions and the beginning of broader economic engagement with the West.
+
+Legacy
+The PepsiCo-Soviet Union deal remains a curious and noteworthy chapter in the annals of international trade, exemplifying how companies and countries sometimes have to think outside the box to achieve their goals. </p>
+        </div>
+        <div class="blog-post">
+            <img src="data:image/jpeg;base64,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" alt="Post 2" class="center">
+<h2> Contest in Philippenes </h2>
+<p> Pepsi Number Fever promotion in the Philippines in 1992. This contest is also known as the 349 incident. It was a sales promotion where PepsiCo printed numbers ranging from 001 to 999 inside the bottle caps of Pepsi, 7-Up, Mountain Dew, and Mirinda1. Certain numbers could be redeemed for prizes, with the grand prize being ₱1 million (around $40,000 at the time).
+
+What Went Wrong?
+The promotion initially saw great success, boosting Pepsi's market share from 19.4% to 24.9%. However, on May 25, 1992, the ABS-CBN evening news program announced that the winning number for that day was 349. Unfortunately, due to a printing error, 800,000 bottle caps had the number 349 printed on them, instead of just two. This meant that theoretically, these bottle caps were worth $32 billion!
+
+The Aftermath
+When thousands of Filipinos rushed to Pepsi bottling plants to claim their prizes, chaos ensued. PepsiCo initially responded that the erroneously printed bottle caps could not be redeemed1. The following day, newspapers announced that the winning number was actually 134, adding to the confusion. Eventually, PepsiCo offered ₱500 (around $18) to holders of the mistakenly printed bottle caps as a gesture of goodwill, costing them $8.9 million.
+
+The incident led to riots and unfortunately, the deaths of at least five people. It remains a dark chapter in the history of promotional campaigns and a cautionary tale about the importance of accuracy and control in marketing promotions.
+</p>
+        </div>
+        <div class="blog-post">
+            <img src="data:image/jpeg;base64,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" alt="Post 3" class="center">
+<h2> The Cola-war </h2>
+<p>The Cola Wars refer to the intense rivalry between Coca-Cola and PepsiCo, which began in the late 1970s and has continued ever since. This competition has been marked by aggressive marketing campaigns, product innovations, and strategic moves aimed at capturing market share and consumer loyalty1.
+
+Key Moments in the Cola Wars
+Pepsi Challenge (1975): Pepsi launched a marketing campaign where consumers participated in blind taste tests, often preferring Pepsi over Coca-Cola. This campaign suggested that Pepsi tasted better than Coca-Cola, challenging Coca-Cola's market dominance2.
+
+New Coke (1985): In response to declining market share, Coca-Cola introduced a new formula called "New Coke," which was sweeter and more similar to Pepsi. However, the change was met with significant consumer backlash, leading Coca-Cola to reintroduce the original formula as "Coca-Cola Classic" just a few months later2.
+
+Pepsi's "Choice of a New Generation" Campaign: Pepsi capitalized on the New Coke controversy by positioning itself as the drink of the younger generation, further eroding Coca-Cola's market share.
+
+Product Innovations: Both companies introduced new products to stay competitive. Coca-Cola launched Diet Coke in 1982 and caffeine-free versions of its drinks in 1983, while Pepsi introduced Pepsi Max and other variations2.
+
+Sponsorships and Advertising: Pepsi has often used strategic sponsorships and online marketing, while Coca-Cola has focused on family-friendly and nostalgic advertising, featuring characters like the Coca-Cola polar bears and Santa Claus.
+
+The Cola Wars have shaped the beverage industry and influenced consumer preferences for decades. It's a fascinating example of how brand rivalry can drive innovation and marketing creativity.
+</p>
+        </div>
+    </section>
+    
+    <section class="categories" id="categories">
+        <h2>Categories</h2>
+        <button class="category-btn">Beverages</button>
+        <button class="category-btn">Snacks</button>
+        <button class="category-btn">Breakfast</button>
+    </section>
+    
+    <section class="about" id="about">
+        <h2>About</h2>
+        <p>PepsiCo is a global food and beverage company that sells a wide range of products, including soft drinks, snacks, and cereals. 
+History:
+PepsiCo was formed in 1965 when Pepsi-Cola Company and Frito-Lay merged. 
+Pepsi was invented in 1893 by Caleb Bradham, who sold it at his drugstore in North Carolina. 
+In 2020, PepsiCo acquired Pioneer Foods for US\$1.7 billion. 
+Products:
+PepsiCo's brands include Pepsi, Gatorade, Mountain Dew, Quaker Oats, Frito-Lay, Alvalle, Aquafina, Brisk, Bubly, and Cap'N Crunch. 
+PepsiCo products are sold in over 200 countries and territories. 
+Leadership: 
+Ramon L. Laguarta is the Chairman of the Board of Directors and Chief Executive Officer of PepsiCo.
+Vision: 
+PepsiCo's vision is to be the Global Leader in Convenient Foods and Beverages.
+ </p>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions or comments, feel free to reach out to us at pepsico.india@pepsico.com</p>
+    </section>
+
+    <section class="subscribe" id="subscribe">
+        <h2>Subscribe</h2>
+        <form>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <button class="subscribe-btn">Subscribe</button>
+        </form>
+    </section>
+    
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/PepsiCo"><i class="icon-facebook"></i>Facebook</a>
+            <a href="https://x.com/pepsico?mx=2"><i class="icon-twitter"></i>Twitter</a>
+            <a href="https://www.instagram.com/pepsico"><i class="icon-instagram"></i>Instagram</a>
+        </div>
+    </footer>
+</body>
+</html>
