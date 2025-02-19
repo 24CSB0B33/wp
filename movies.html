@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url("https://i.pinimg.com/736x/19/8b/2f/198b2f01e73b905772279616eccc7c65.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://i.pinimg.com/736x/19/8b/2f/198b2f01e73b905772279616eccc7c65.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid red;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h2 {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+h3 {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:500;
+}
+
+::placeholder {
+  color: black;
+  opacity: 0.8;
+  font-family: 'Montserrat', sans-serif;
+  font-weight:400;
+}
+
+#movie {
+  border: 1px solid red;
+  opacity: 1;
+  padding: 10px;
+  margin-bottom: 10px;
+  width:300px;
+height:20px;
+  border-radius: 5px;
+}
+
+#movie:hover {
+  background-color: #A8A8A8;
+  border:2px solid red;
+  opacity: 0.7;
+}
+
+#addMovie, #clearList {
+  background-color: red;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+  width: 45%;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+#addMovie:hover, #clearList:hover {
+  background-color: darkred;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+</style>
+</head>
+<body>
+<section>
+  <div class="container">
+    <form id="movieForm">
+      <h2>Favourite Movie List</h2>
+<br>
+      <h3>New Movie:</h3>
+      <input type="text" id="movie" placeholder="Enter movie name">
+<br>
+      <div class="btn">
+        <input type="button" id="addMovie" value="Add Movie">
+        <input type="button" id="clearList" value="Clear List">
+      </div>
+    </form>
+    <ul id="movieList"></ul>
+    <p id="movieCount"></p>
+  </div>
+</section>
+<script>
+document.getElementById('addMovie').addEventListener('click', function() {
+  let movieName = document.getElementById('movie').value;
+  if (movieName.trim() !== "") {
+    addMovie(movieName);
+    document.getElementById('movie').value = "";
+  }
+});
+
+document.getElementById('clearList').addEventListener('click', function() {
+  clearMovieList();
+});
+
+function addMovie(movie) {
+  let movieList = document.getElementById('movieList');
+  let movieItem = document.createElement('li');
+  movieItem.textContent = movie;
+  movieItem.addEventListener('click', function() {
+    removeMovie(movieItem);
+  });
+  movieList.appendChild(movieItem);
+  updateMovieCount();
+}
+
+function removeMovie(movieItem) {
+  movieItem.remove();
+  updateMovieCount();
+}
+
+function clearMovieList() {
+  document.getElementById('movieList').innerHTML = "";
+  updateMovieCount();
+}
+  
+function updateMovieCount() {
+  let movieCount = document.getElementById('movieList').children.length;
+  document.getElementById('movieCount').textContent = "Total Movies: " + movieCount;
+}
+</script>
+</body>
+</html>
