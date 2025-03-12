@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Features</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      padding: 20px;
+    }
+
+    .light-mode {
+      background-image:url('https://images.ctfassets.net/kftzwdyauwt9/5J9s3ItUUDOTebSo0ZVmun/642e8632be32866792c7aaae0113aaa5/44.png?w=1920&q=90&fm=webp');
+backround-repeat:no-repeat;
+background-size:cover;
+      color: #333;
+    }
+
+    .dark-mode {
+     background-image:url('https://4kwallpapers.com/images/wallpapers/windows-11-dark-mode-abstract-background-black-background-3840x2400-8710.jpg');
+backround-repeat:no-repeat;
+background-size:cover;
+      color: black;
+    }
+
+#style-change{
+ padding: 10px 20px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+margin-left:10px;
+      transition: background-color 0.3s ease;
+}
+
+   #theme-toggle {
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+      background-color: #45a049;
+    }
+
+    .form-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container button {
+      display: flex;
+           
+            flex-direction: column;
+            justify-content: space-between;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin: 5px 0;
+    }
+
+    .form-container button {
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+
+    .form-container button:hover {
+      background-color: #45a049;
+    }
+
+    .form-container input:focus,
+    .form-container button:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+   
+    #timer-display {
+      font-size: 2.5em;
+      padding: 30px;
+      text-align: center;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: background-color 0.3s ease;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    #box {
+display: flex;
+           
+            flex-direction: column;
+            justify-content: space-between;
+      width: 200px;
+      height: 100px;
+      background-color: #3498db;
+      color: white;
+      text-align: center;
+      line-height: 100px;
+      border-radius: 8px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 300px;
+      margin: 20px auto;
+      font-size: 18px;
+    }
+
+    ul li {
+      padding: 10px;
+      margin: 5px 0;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 12px 20px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    td button {
+display: flex;
+           
+            flex-direction: column;
+            justify-content: space-between;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    td button:hover {
+      background-color: #c0392b;
+    }
+
+    #gallery {
+       display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 5rem;
+    }
+
+    #gallery img {
+ display: flex;
+           
+            flex-direction: column;
+            justify-content: space-between;
+ margin-bottom: 50px;
+            margin-right: 30px;
+      width: 300px;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    #lightbox img:hover {
+      transform: scale(1.05);
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<h1><center><b>Interactive Features</b></center><h1>
+<body class="light-mode">
+
+  <button id="theme-toggle">Toggle Dark Mode</button>
+
+  <br><br>
+
+ 
+  <div class="form-container">
+    <input type="number" id="time-input" placeholder="Enter seconds" />
+    <button id="start-button">Start</button>
+    <button id="pause-button">Pause</button>
+    <button id="reset-button">Reset</button>
+    <p id="timer-display">0</p>
+  </div>
+
+  
+  <div>
+    <ul id="list">
+      <li>Audi</li>
+      <li>BMW</li>
+      <li>Benz</li>
+      <li>Ferrari</li>
+      <li>BMW</li>
+    </ul>
+    <div class="form-container">
+      <button id="sort-btn">Sort Alphabetically</button>
+      <button id="reverse-btn">Reverse Order</button>
+      <button id="filter-btn">Filter Duplicates</button>
+    </div>
+  </div>
+
+  <br><br>
+  <div>
+    <table id="data-table">
+      <tr>
+        <th>Name</th>
+        <th>Profession</th>
+        <th>Action</th>
+      </tr>
+    </table>
+    <div class="form-container">
+      <input type="text" id="name-input" placeholder="Enter Name" />
+      <input type="text" id="profession-input" placeholder="Enter your profession" />
+      <button id="add-row-btn">Add Row</button>
+    </div>
+  </div>
+<br><br>
+  
+  <div id="gallery">
+    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSfXLY32R0v0vvxKHMn8MQEbEmaxeu1YvaMa_eC2kVhKkyuLgTvoCyiyNxUXkr4xT2Q5x2e6d2tFMFLbMTakxYX2T_34Rf_J2TQsyQyHmaBT8zTJogGB2uw" alt="Thumbnail 1" class="thumb">
+    <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSytcvnw3XI0T44zv42_OHM9RGNKHU-yzZtfblo37oWPHgeOM0XZqkI64LVnCnPQ0bXXsCgMrTz2rEgLWPiW53RPGks_Lx7JkJKQpchvWpU" alt="Thumbnail 2" class="thumb">
+    <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQBTus7tPFDbQtFUlbY72e8wn5Iywo6GzmBug6GjmGI8MJAdMy2F6CrUxTqEuJGhV6hMYGLGYXt53kUWeQZtkALGKOj8Be1AMBouEotGJ9MY5C62TFMUCxm" alt="Thumbnail 3" class="thumb">
+  </div>
+
+  <div id="lightbox">
+    <span id="close-btn">&times;</span>
+    <img id="lightbox-image" src="" alt="Large View">
+  </div>
+
+  <script>
+    const themeToggleButton = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    if(localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark-mode");
+    } else {
+      body.classList.add("light-mode");
+    }
+
+    themeToggleButton.addEventListener("click", () => {
+      if(body.classList.contains("light-mode")) {
+        body.classList.replace("light-mode", "dark-mode");
+        localStorage.setItem("theme", "dark");
+      } else {
+        body.classList.replace("dark-mode", "light-mode");
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+   
+    let countdownInterval;
+    let timeLeft = 0;
+    const timeInput = document.getElementById("time-input");
+    const startButton = document.getElementById("start-button");
+    const pauseButton = document.getElementById("pause-button");
+    const resetButton = document.getElementById("reset-button");
+    const timerDisplay = document.getElementById("timer-display");
+
+    startButton.addEventListener("click", () => {
+      timeLeft = parseInt(timeInput.value) || 0;
+      updateTimerDisplay();
+      countdownInterval = setInterval(countdown, 1000);
+    });
+
+    pauseButton.addEventListener("click", () => {
+      clearInterval(countdownInterval);
+    });
+
+    resetButton.addEventListener("click", () => {
+      clearInterval(countdownInterval);
+      timeLeft = 0;
+      updateTimerDisplay();
+    });
+
+    function countdown() {
+      if(timeLeft > 0) {
+        timeLeft--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(countdownInterval);
+      }
+    }
+
+    function updateTimerDisplay() {
+      timerDisplay.textContent = timeLeft;
+
+      if (timeLeft > 10) {
+        timerDisplay.style.backgroundColor = 'green';
+        body.style.backgroundColor = 'green';
+      } else if (timeLeft <= 10 && timeLeft > 5) {
+        timerDisplay.style.backgroundColor = 'yellow';
+        body.style.backgroundColor = 'yellow';
+      } else {
+        timerDisplay.style.backgroundColor = 'red';
+        body.style.backgroundColor = 'red';
+      }
+    }
+
+    
+    const styleChangeButton = document.getElementById("style-change");
+    const box = document.getElementById("box");
+
+    styleChangeButton.addEventListener("click", () => {
+      box.style.backgroundColor = "green";
+      box.style.color = "yellow";
+      box.style.width = "300px";
+      box.style.height = "150px";
+    });
+
+    // List Manipulation (Sort, Reverse, Filter)
+    const list = document.getElementById("list");
+
+    document.getElementById("sort-btn").addEventListener("click", () => {
+      let items = [...list.getElementsByTagName("li")];
+      items = items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+      list.innerHTML = "";
+      items.forEach(item => list.appendChild(item));
+    });
+
+    document.getElementById("reverse-btn").addEventListener("click", () => {
+      let items = [...list.getElementsByTagName("li")];
+      items.reverse();
+      list.innerHTML = "";
+      items.forEach(item => list.appendChild(item));
+    });
+
+    document.getElementById("filter-btn").addEventListener("click", () => {
+      let items = [...list.getElementsByTagName("li")];
+      const uniqueItems = [...new Set(items.map(item => item.textContent))];
+      list.innerHTML = "";
+      uniqueItems.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    });
+
+    // Add Row to Table
+    const addRowButton = document.getElementById("add-row-btn");
+    const nameInput = document.getElementById("name-input");
+    const professionInput = document.getElementById("profession-input");
+    const table = document.getElementById("data-table");
+
+    addRowButton.addEventListener("click", () => {
+      const name = nameInput.value;
+      const profession = professionInput.value;
+
+      if(name && profession) {
+        const newRow = table.insertRow();
+        newRow.insertCell(0).textContent = name;
+        newRow.insertCell(1).textContent = profession;
+
+        const deleteCell = newRow.insertCell(2);
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", () => {
+          newRow.remove();
+        });
+        deleteCell.appendChild(deleteButton);
+
+        nameInput.value = "";
+        professionInput.value = "";
+      }
+    });
+    const thumbnails = document.querySelectorAll(".thumb");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const closeBtn = document.getElementById("close-btn");
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener("click", (event) => {
+        lightbox.style.display = "flex";
+        lightboxImage.src = event.target.src.replace("thumb", "large");
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      lightbox.style.display = "none";
+    });
+  </script>
+</body>
+</html>
