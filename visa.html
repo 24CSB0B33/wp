@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VISA Verification</title>
+    <style>
+        body {
+            background-image: url('https://t4.ftcdn.net/jpg/02/43/54/91/360_F_243549193_1jAgIBe6vliz11uoz9mWu6GsAlKIVtCM.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+}
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        fieldset {
+            background-color: rgba(255, 255, 255, 0.8);
+            
+            padding: 50px;
+            width: 300px;
+           border:5px solid gold;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px gray;
+          margin:auto;
+padding-top:20px;
+        }
+
+fieldset:hover{
+border:7px solid green;
+}
+
+        select, button {
+            margin-top: 10px;
+            padding: 5px;
+            width: 100%;
+background-color:gold;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+           
+        }
+    </style>
+</head>
+
+<body>
+<br><br><br><br><br><br><br><br>
+    
+    <div>
+<fieldset>
+<h1>VISA Enquiry</h1>
+            <label for="country">Choose your country of travel:</label><br><br>
+            <select id="country">
+                <option value="" selected disabled>--Select a country--</option>
+                <option value="USA">USA</option>
+                <option value="CAN">Canada</option>
+                <option value="IND">India</option>
+                <option value="UK">United Kingdom</option>
+                <option value="AUS">Australia</option>
+            </select><br><br>
+            <button onclick="checkVisa()">Check Visa</button>
+        </fieldset>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkVisa() {
+            const country = document.getElementById("country").value;
+            const resultDiv = document.getElementById("result");
+
+            switch (country) {
+                case "USA":
+                    resultDiv.innerHTML = "Visa required for most applicants.";
+                    break;
+                case "CAN":
+                    resultDiv.innerHTML = "Visa required unless you have an eTA.";
+                    break;
+                case "IND":
+                    resultDiv.innerHTML = "Visa required before travel.";
+                    break;
+                case "UK":
+                    resultDiv.innerHTML = "Visa depends on the duration of stay.";
+                    break;
+                case "AUS":
+                    resultDiv.innerHTML = "eVisa available for eligible travelers.";
+                    break;
+                default:
+                    resultDiv.innerHTML = "Please select a country.";
+            }
+        }
+    </script>
+</body>
+
+</html>
