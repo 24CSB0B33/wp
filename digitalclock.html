@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern Digital Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root
+        {
+            --bg-primary: #121212;
+            --text-primary: #e0e0e0;
+            --accent-color: #4a4a4a;
+            --highlight-color: #00b0ff;
+        }
+
+       
+        body 
+       {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease;
+            overflow: hidden;
+        }
+
+        .clock-container 
+        {
+            background-color: var(--accent-color);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        #clock
+       {
+            font-size: 4.5rem;
+            font-weight: 600;
+            letter-spacing: -3px;
+            color: var(--highlight-color);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(0,176,255,0.3);
+        }
+
+        #date 
+        {
+            font-size: 1rem;
+            color: var(--text-primary);
+            opacity: 0.7;
+            margin-bottom: 25px;
+        }
+
+        .control-section 
+        {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 8px;
+           
+        }
+
+        .btn 
+       {
+            flex: 1;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--highlight-color);
+            transform: scale(1.05);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input[type="time"], 
+        input[type="number"] {
+            flex: 1;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .progress-container {
+            background-color: var(--bg-primary);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: var(--highlight-color);
+            width: 0%;
+            transition: width 0.5s linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .theme-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .theme-dot:hover
+        {
+            opacity: 0.8;
+        }
+
+        .theme-dot.active 
+        {
+            opacity: 1;
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        
+        .stopwatch-display 
+        {
+           font-size:30px;
+        }
+
+        #dark-theme { background-color: #121212; }
+        #light-theme { background-color: #f0f0f0; }
+        #neon-theme { background-color: #0f0; }
+        #custom-theme { background-color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="theme-toggle">
+            <div id="dark-theme" class="theme-dot active" onclick="changeTheme('dark')"></div>
+            <div id="light-theme" class="theme-dot" onclick="changeTheme('light')"></div>
+            <div id="neon-theme" class="theme-dot" onclick="changeTheme('neon')"></div>
+            <div id="custom-theme" class="theme-dot" onclick="changeTheme('custom')"></div>
+        </div>
+
+        <div id="clock" class="pulse-animation">00:00:00 AM</div>
+        <div id="date">Wednesday, March 26, 2025</div>
+
+        <div class="control-section">
+            <input type="time" id="alarm-time" placeholder="Set Alarm">
+            <select id="alarm-sound" class="btn">
+                <option>Beep</option>
+                <option>Melody</option>
+                <option>Chime</option>
+            </select>
+            <button onclick="setAlarm()" class="btn">Set Alarm</button>
+        </div>
+
+        <div class="control-section">
+            <div class="input-group">
+                <input type="number" id="countdown-minutes" placeholder="Min">
+                <input type="number" id="countdown-seconds" placeholder="Sec">
+            </div>
+            
+            <button onclick="startCountdown()" class="btn">Start Countdown</button>
+        </div>
+
+        <div class="progress-container">
+            <div id="countdown-progress" class="progress-bar"></div>
+        </div>
+<br>
+        <div class="control-section">
+            <button onclick="startStopwatch()" class="btn">Start Stopwatch</button>
+            <button onclick="pauseStopwatch()" class="btn">Pause</button>
+            <button onclick="resetStopwatch()" class="btn">Reset</button>
+        </div>
+
+<br>
+        <div id="stopwatch-display">00:00:00</div>
+    </div>
+
+    <script>
+
+        function updateClock() 
+{
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            const clockElement = document.getElementById('clock');
+            clockElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+            const dateElement = document.getElementById('date');
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            dateElement.textContent = now.toLocaleDateString(undefined, options);
+        }
+    
+        setInterval(updateClock, 1000);
+
+      
+function changeTheme(theme) 
+  {
+    const root = document.documentElement;
+    const themeDots = document.querySelectorAll('.theme-dot');
+
+  
+    themeDots.forEach(dot => dot.classList.remove('active'));
+
+    
+    document.getElementById(`${theme}-theme`).classList.add('active');
+
+   
+    switch (theme) 
+   {
+        case 'dark':
+            root.style.setProperty('--bg-primary', '#121212');
+            root.style.setProperty('--text-primary', '#e0e0e0');
+            root.style.setProperty('--accent-color', '#4a4a4a');
+            root.style.setProperty('--highlight-color', '#00b0ff');
+            break;
+        case 'light':
+            root.style.setProperty('--bg-primary', '#f0f0f0');
+            root.style.setProperty('--text-primary', '#000000');
+            root.style.setProperty('--accent-color', '#cccccc');
+            root.style.setProperty('--highlight-color', '#0077cc');
+            break;
+        case 'neon':
+            root.style.setProperty('--bg-primary', '#0f0f0f');
+            root.style.setProperty('--text-primary', '#00ff00');
+            root.style.setProperty('--accent-color', '#333333');
+            root.style.setProperty('--highlight-color', '#ff00ff');
+            break;
+        case 'custom':
+            root.style.setProperty('--bg-primary', '#ff6b6b');
+            root.style.setProperty('--text-primary', '#000000');
+            root.style.setProperty('--accent-color', '#f0a1a1');
+            root.style.setProperty('--highlight-color', '#ff0000');
+            break;
+    }
+}
+
+let alarmTime = null;
+let alarmTimeout = null;
+
+function setAlarm() 
+    {
+    const alarmInput = document.getElementById('alarm-time').value;
+    if (!alarmInput)
+    {
+        alert('Please set a valid alarm time.');
+        return;
+    }
+    alarmTime = new Date();
+    const [hours, minutes] = alarmInput.split(':');
+    alarmTime.setHours(hours, minutes, 0, 0);
+
+    const now = new Date();
+    const timeToAlarm = alarmTime.getTime() - now.getTime();
+
+    if (timeToAlarm < 0)
+ {
+        alert('The selected time is in the past. Please choose a future time.');
+        return;
+    }
+
+const alarmElement = document.getElementById('alarm-time');
+    alarmElement.style.backgroundColor = 'var(--highlight-color)';
+    alarmTimeout = setTimeout(() =>
+ {
+        playAlarmSound();
+        alert('Alarm ringing!');
+    }, timeToAlarm);
+
+    alert(`Alarm set for ${alarmTime.toLocaleTimeString()}`);
+}
+
+function playAlarmSound()
+ {
+    const soundSelect = document.getElementById('alarm-sound');
+    const soundChoice = soundSelect.value;
+
+    let audio;
+    if (soundChoice === 'Beep') 
+{
+        audio = new Audio('path/to/beep-sound.mp3');
+    } else if (soundChoice === 'Melody') {
+        audio = new Audio('path/to/chime-sound.mp3');
+    } else if (soundChoice === 'Chime') {
+        audio = new Audio('path/to/melody-sound.mp3');
+    }
+    audio.play();
+}
+
+function startCountdown()
+ {
+    const minutesInput = document.getElementById('countdown-minutes').value;
+    const secondsInput = document.getElementById('countdown-seconds').value;
+    let totalSeconds = parseInt(minutesInput) * 60 + parseInt(secondsInput);
+    const progressBar = document.getElementById('countdown-progress');
+
+    if (isNaN(totalSeconds) || totalSeconds <= 0)
+    {
+        alert('Please enter valid countdown time.');
+        return;
+    }
+
+    const interval = setInterval(() =>
+   {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        document.getElementById('clock').textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        totalSeconds--;
+
+        progressBar.style.width = `${(1 - totalSeconds / (minutesInput * 60 + secondsInput)) * 100}%`;
+
+        if (totalSeconds < 0) 
+{
+            clearInterval(interval);
+            alert('Countdown finished!');
+        }
+    }, 1000);
+}
+
+let stopwatchInterval;
+let elapsedTime = 0;
+
+function startStopwatch()
+ {
+    if (stopwatchInterval) return; // Prevent multiple intervals
+    stopwatchInterval = setInterval(() => 
+{
+        elapsedTime++;
+        const hours = Math.floor(elapsedTime / 3600);
+        const minutes = Math.floor((elapsedTime % 3600) / 60);
+        const seconds = elapsedTime % 60;
+
+        document.getElementById('stopwatch-display').textContent = 
+            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }, 1000);
+}
+
+function pauseStopwatch()
+ {
+    clearInterval(stopwatchInterval);
+    stopwatchInterval = null;
+}
+
+function resetStopwatch() 
+{
+    clearInterval(stopwatchInterval);
+    stopwatchInterval = null;
+    elapsedTime = 0;
+    document.getElementById('stopwatch-display').textContent = '00:00:00';
+}
+
+
+
+    </script>
+</body>
+</html>
